@@ -1,0 +1,111 @@
+<div class="container">
+    <h1>
+        Productos
+    </h1>
+    <br>
+    <form class="row g-3 needs-validation" method="POST" action="/admin/product-services" novalidate enctype="multipart/form-data">
+
+        <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="validationCustom01" maxlength="50" minlength="1" required name="name">
+            <div class="invalid-feedback">
+                Ingresa un producto correcto
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="validationCustomUsername" class="form-label">Cantidad</label>
+            <div class="input-group has-validation">
+                <input name="quantity" type="number" class="form-control" id="validationCustomUsername" min="0" required>
+                <div class="invalid-feedback">
+                    Ingresa una cantidad valida
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <label for="validationCustomUsername" class="form-label">Precio</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">$</span>
+
+                <input name="price" type="number" class="form-control" id="validationCustomUsername" min="0" required>
+                <div class="invalid-feedback">
+                    Ingresa un precio valido
+                </div>
+            </div>
+        </div>
+
+        <div class="input-group col-mb-3">
+            <input name="image1" type="file" class="form-control" id="inputGroupFile02" required accept="image/*">
+            <label class="input-group-text" for="image1">Subir</label>
+            <div class="invalid-feedback">
+                Selecciona una imagen
+            </div>
+        </div>
+
+        <div class="input-group col-mb-3">
+            <input name="image2" type="file" class="form-control" id="inputGroupFile02" required accept="image/*">
+            <label class="input-group-text" for="image2">Subir</label>
+            <div class="invalid-feedback">
+                Selecciona una imagen
+            </div>
+        </div>
+
+        <div class="input-group col-mb-3">
+            <input name="image3" type="file" class="form-control" id="inputGroupFile02" required accept="image/*">
+            <label class="input-group-text" for="image3">Subir</label>
+            <div class="invalid-feedback">
+                Selecciona una imagen
+            </div>
+        </div>
+
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Confirmar</button>
+        </div>
+    </form>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+
+            <th scope="col">Imagen 1</th>
+            <th scope="col">Imagen 2</th>
+            <th scope="col">Imagen 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>EGO</td>
+            <td>3</td>
+            <td>$50</td>
+            <td>foto1.jpg</td>
+            <td>foto2.jpg</td>
+            <td>foto3.jpg</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Gel Xtream</td>
+            <td>5</td>
+            <td>$20</td>
+            <td>foto1.jpg</td>
+            <td>foto2.jpg</td>
+            <td>foto3.jpg</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Spray caprice</td>
+            <td>$45</td>
+            <td>foto1.jpg</td>
+            <td>foto2.jpg</td>
+            <td>foto3.jpg</td>
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+
