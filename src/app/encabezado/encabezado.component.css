@@ -1,0 +1,12 @@
+.arriba{
+    background-color: rgb(142, 166, 233);
+}
+
+.arriba:hover{
+    background-color: rgb(142, 166, 233);
+}
+
+.acomodo{
+    margin: 0;
+    padding: 0;
+}

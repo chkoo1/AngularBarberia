@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
-import { MenuComponent } from '../menu/menu.component';
+import { InicionsesionComponent } from '../inicionsesion/inicionsesion.component';
+import { Router, RouterModule } from '@angular/router';
+import { CatalogoComponent } from '../catalogo/catalogo.component';
+import { ContactoComponent } from '../contacto/contacto.component';
 
 @Component({
   selector: 'app-encabezado',
   standalone: true,
-  imports: [MenuComponent],
+  imports: [
+    InicionsesionComponent,
+    RouterModule,
+    InicionsesionComponent,
+    CatalogoComponent,
+    ContactoComponent,
+    RouterModule
+  ],
   templateUrl: './encabezado.component.html',
   styleUrl: './encabezado.component.css'
 })

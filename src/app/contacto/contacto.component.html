@@ -1,83 +1,96 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous">
 
-    
-    <div class="container">
-        <h1>Clientes</h1>
-        <br>
-        <div class="container-md-6 mx-auto">
-            
-            <form class="row g-3 needs-validation" method="POST" action="/admin/customers" novalidate>
-            
-                <div class="col-md-4">
-                    <label for="validationCustom01" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="validationCustom01" maxlength="25" minlength="3" name="first_name"
-                        onkeypress="return check(event)" required>
-                    <div class="invalid-feedback">
-                        Ingresa un nombre correcto
-                    </div>
-                </div>
-            
-                <div class="col-md-4">
-                    <label for="validationCustom02" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="validationCustom02" maxlength="30" minlength="5" name="last_name"
-                        onkeypress="return check(event)" required>
-                    <div class="invalid-feedback">
-                        Ingresa un apellido correcto
-                    </div>
-                </div>
-            
-                <div class="col-md-8">
-                    <label for="validationCustom05" class="form-label">Teléfono</label>
-                    <input type="text" class="form-control" id="validationCustom05" maxlength="12" minlength="10" name="phone"
-                        onkeypress="return checkPhone(event) " required>
-                    <div class="invalid-feedback">
-                        Ingresa un número teléfonico valido
-                    </div>
-                </div>
-            
-                <div class="col-6">
-                    <button class="btn btn-primary" type="submit">Confirmar</button>
+<div class="container">
+    <h1>Clientes</h1>
+    <br>
+    <div class="container-md-6 mx-auto">
 
+        <form class="row g-3 needs-validation" method="POST"
+            action="/admin/customers" novalidate>
+
+            <!-- ! ID -->
+            <div class="col-md-4" [hidden]="true">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id"
+                    maxlength="25" minlength="3" name="id" [(ngModel)]="cliente.id"
+                    onkeypress="return check(event)" required>
+                <div class="invalid-feedback">
+                    Ingresa un nombre correcto
                 </div>
-            </form>
-        </div>
-        <table class="table">
-            <thead>
-              <tr>
+            </div>
+
+            <div class="col-md-4">
+                <label for="first_name" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="first_name"
+                    maxlength="25" minlength="3" name="first_name" [(ngModel)]="cliente.first_name"
+                    onkeypress="return check(event)" required>
+                <div class="invalid-feedback">
+                    Ingresa un nombre correcto
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="last_name" class="form-label">Apellidos</label>
+                <input type="text" class="form-control" id="last_name"
+                    maxlength="30" minlength="5" name="last_name"
+                    onkeypress="return check(event)" required [(ngModel)]="cliente.last_name">
+                <div class="invalid-feedback">
+                    Ingresa un apellido correcto
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="phone"
+                    maxlength="12" minlength="10" name="phone"
+                    onkeypress="return checkPhone(event) " required [(ngModel)]="cliente.phone">
+                <div class="invalid-feedback">
+                    Ingresa un número teléfonico valido
+                </div>
+            </div>
+
+            <div class="col-6">
+                @switch (action) {
+                    @case ("agregar") {
+                        <button class="btn btn-primary" type="submit" (click)="guardar()">Guardar</button>
+                    }
+                    @case ("modificar") {
+                        <button class="btn btn-primary" type="submit" (click)="actionModificar(cliente.id)">Modificar</button>
+                    }
+                }
+            </div>
+        </form>
+    </div>
+
+<br>
+
+    <table class="table">
+        <thead>
+            <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Telefono</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>123114424</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>12314434</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>31231231</td>
-              </tr>
-            </tbody>
-          </table>
+                <th scope="col">Editar</th>
+                <th scope="col">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (cliente of clientes.customers; track cliente.id){
+                <tr>
+                    <td>{{cliente.id}}</td>
+                    <td>{{cliente.first_name}}</td>
+                    <td>{{cliente.last_name}}</td>
+                    <td>{{cliente.phone}}</td>
+                    <td><a class="btn btn-primary" (click)="modificar(cliente.id, cliente.first_name, cliente.last_name, cliente.phone)">Editar</a></td>
+                    <td><a class="btn btn-primary" (click)="actionEliminar(cliente.id)">Borrar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-          <div class="col-6">
-            
-
-            
-            <a class="btn btn-primary" href="" routerLink="clientes" >editar</a>
-        </div>
-    </div>
-
-    
+</div>
