@@ -3,6 +3,7 @@ import { InicionsesionComponent } from '../inicionsesion/inicionsesion.component
 import { Router, RouterModule } from '@angular/router';
 import { CatalogoComponent } from '../catalogo/catalogo.component';
 import { ContactoComponent } from '../contacto/contacto.component';
+import { SesionService } from '../services/sesion.service';
 
 @Component({
   selector: 'app-encabezado',
@@ -19,5 +20,10 @@ import { ContactoComponent } from '../contacto/contacto.component';
   styleUrl: './encabezado.component.css'
 })
 export class EncabezadoComponent {
-
+  constructor(public inicioService: SesionService, private router: Router) { }
+  
+  logout() {
+    this.inicioService.logged = false;
+    this.router.navigate(['/iniciosesion'])
+  }
 }

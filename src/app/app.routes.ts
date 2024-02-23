@@ -11,7 +11,7 @@ export const routes: Routes = [
     {path:"dashboard",component:InicioComponent},
     {path:"clientes",component:ContactoComponent},
     {path:"productos",component:CatalogoComponent},
-    {path:"**",redirectTo:"/iniciosesion"}
+    { path: "**", redirectTo: "/iniciosesion" },
 
 ];
 
